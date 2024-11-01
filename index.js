@@ -1,9 +1,15 @@
-const { Client, GatewayIntentBits, Collection, messageLink } = require('discord.js');
-const fs = require('fs');
-const path = require('path');
-require('dotenv').config();
+import { Client, GatewayIntentBits, Collection } from 'discord.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const token = process.env.TOKEN;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -12,8 +18,7 @@ const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-    const filePath = path.join(commandsPath, file);
-    const command = require(filePath);
+    const command = await import(path.join(commandsPath, file));
     client.commands.set(command.data.name, command);
 }
 
