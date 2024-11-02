@@ -12,6 +12,7 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction) {
     const fen = interaction.options.getString('fen');
     const lichessApiUrl = `https://lichess.org/api/cloud-eval?fen=${encodeURIComponent(fen)}`;
+    const dynboardSettings = 'coordinates=outside&board=brown&piece=classic&size=3';
 
     try {
         const response = await fetch(lichessApiUrl);
@@ -21,7 +22,7 @@ export async function execute(interaction) {
         const data = await response.json();
 
         const evaluation = data.pvs[0].cp / 100; // Convert centipawns to pawns
-        const imageUrl = `https://chess.com/dynboard/?fen=${encodeURIComponent(fen)}%20-%20-%20-&board=green&piece=neo&size=3&&coordinates=Outside`;
+        const imageUrl = `https://chess.com/dynboard/?fen=${encodeURIComponent(fen)}%20-%20-%20-&${dynboardSettings}`;
        
         // Replace spaces with underscores to create a valid URL for lichess analysis
         const encodedFen = fen.replace(/ /g, '_');
