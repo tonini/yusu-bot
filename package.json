@@ -7,6 +7,9 @@
     "start": "node index.js",
     "test": "vitest"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
