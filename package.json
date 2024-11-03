@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "type": "module",
+  "nodeVersion": ">=18.0.0",
   "scripts": {
     "start": "node index.js",
     "test": "vitest"
