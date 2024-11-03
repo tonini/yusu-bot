@@ -43,7 +43,7 @@ describe('openingstats command', () => {
             embeds: expect.arrayContaining([
                 expect.objectContaining({
                     title: 'Opening Statistics',
-                    description: expect.stringContaining('**Most Played Moves:**'),
+                    description: expect.stringContaining('**Most Played Moves:**\n> **e4:** 100.00% W, 30.00% D, 20.00% L (100 games)\n> **d4:** 80.00% W, 40.00% D, 20.00% L (100 games)'),
                     fields: expect.arrayContaining([
                         expect.objectContaining({ name: 'Top 5 Games' })
                     ])
