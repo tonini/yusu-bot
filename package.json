@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "main": "index.js",
   "type": "module",
-  "nodeVersion": ">=18.0.0",
+  "nodeVersion": ">=22.11.0",
   "scripts": {
     "start": "node index.js",
     "test": "vitest"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.11.0"
   },
   "keywords": [],
   "author": "",
