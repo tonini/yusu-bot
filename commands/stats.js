@@ -2,7 +2,7 @@ import { embedLength, SlashCommandBuilder } from 'discord.js';
 import fetch from 'node-fetch';
 
 export const data = new SlashCommandBuilder()
-    .setName('openingstats')
+    .setName('stats')
     .setDescription('Displays statistics and most common moves for a given opening')
     .addStringOption(option =>
         option.setName('fen')
@@ -20,7 +20,6 @@ export async function execute(interaction) {
             throw new Error('Failed to fetch master games from Lichess API');
         }
         const data = await response.json();
-        console.log(data);
 
         const imageUrl = `https://chess.com/dynboard/?fen=${encodeURIComponent(fen)}%20-%20-%20-&${dynboardSettings}`;
        

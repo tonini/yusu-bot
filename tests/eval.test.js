@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
-import { data, execute } from '../commands/evalfen.js';
+import { data, execute } from '../commands/eval.js';
 
-describe('evalfen command', () => {
+describe('#eval command', () => {
   it('should evaluate a FEN position and reply with the evaluation and image', async () => {
     const mockInteraction = {
       isCommand: () => true,

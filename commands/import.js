@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import fetch from 'node-fetch';
 
 export const data = new SlashCommandBuilder()
-  .setName('importpgn')
+  .setName('import')
   .setDescription('Imports a PGN game into Lichess and returns game information.')
   .addStringOption(option => 
     option.setName('pgn')
@@ -25,7 +25,6 @@ export async function execute(interaction) {
 
     const data = await response.json();
     const gameUrl = data.url;
-    console.log(response.ok)
     if (!response.ok) {
       throw new Error(data.error || 'Failed to import PGN to Lichess');
     }
@@ -35,11 +34,10 @@ export async function execute(interaction) {
       description: 'Your game has been successfully imported to Lichess.',
       fields: [
         { name: 'Game URL', value: gameUrl },
-        { name: 'PGN', value: `\`\`\`${pgn}\`\`\`` }
       ],
       timestamp: new Date(),
       footer: {
-        text: 'Lichess Game Importer'
+        text: 'Lichess Game Imported at'
       }
     };
 

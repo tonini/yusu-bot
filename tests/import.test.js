@@ -1,10 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
-import { execute } from '../commands/importpgn.js';
+import { execute } from '../commands/import.js';
 import fetch from 'node-fetch';
 
 vi.mock('node-fetch');
 
-describe('importpgn command', () => {
+describe('#import command', () => {
   it('should successfully import a PGN and reply with game information', async () => {
     const mockInteraction = {
       isCommand: () => true,
@@ -40,12 +40,11 @@ describe('importpgn command', () => {
           title: 'Lichess Game Import',
           description: 'Your game has been successfully imported to Lichess.',
           fields: [
-            { name: 'Game URL', value: 'https://lichess.org/sample-game' },
-            { name: 'PGN', value: '```sample PGN string```' }
+            { name: 'Game URL', value: 'https://lichess.org/sample-game' }
           ],
           timestamp: expect.any(Date),
           footer: {
-            text: 'Lichess Game Importer'
+            text: 'Lichess Game Imported at'
           }
         }
       ]

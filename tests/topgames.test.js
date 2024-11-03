@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import { execute } from '../commands/openingstats.js';
+import { execute } from '../commands/topgames.js';
 import { beforeEach } from 'vitest'
 import fetch from 'node-fetch';
 
 vi.mock('node-fetch');
 
-describe('openingstats command', () => {
+describe('#topgames command', () => {
     let interaction;
 
     beforeEach(() => {
@@ -17,12 +17,8 @@ describe('openingstats command', () => {
         };
     });
 
-    it('should fetch and display opening statistics successfully', async () => {
+    it('should fetch and display the top games successfully', async () => {
         const mockData = {
-            moves: [
-                { san: 'e4', white: 50, draws: 30, black: 20 },
-                { san: 'd4', white: 40, draws: 40, black: 20 }
-            ],
             topGames: [
                 { id: 'game1', white: { name: 'Player1' }, black: { name: 'Player2' } },
                 { id: 'game2', white: { name: 'Player3' }, black: { name: 'Player4' } }
@@ -42,10 +38,10 @@ describe('openingstats command', () => {
         expect(interaction.reply).toHaveBeenCalledWith(expect.objectContaining({
             embeds: expect.arrayContaining([
                 expect.objectContaining({
-                    title: 'Opening Statistics',
-                    description: expect.stringContaining('**Most Played Moves:**\n> **e4:** 100.00% W, 30.00% D, 20.00% L (100 games)\n> **d4:** 80.00% W, 40.00% D, 20.00% L (100 games)'),
+                    title: 'Top Games',
+                    description: expect.stringContaining('**The 15 top games played from the given position:**'),
                     fields: expect.arrayContaining([
-                        expect.objectContaining({ name: 'Top 5 Games' })
+                        expect.objectContaining({ name: 'Top 15 Games', value: "[Player1 vs Player2](https://lichess.org/game1)\n[Player3 vs Player4](https://lichess.org/game2)" })
                     ])
                 })
             ])
@@ -62,7 +58,7 @@ describe('openingstats command', () => {
         await execute(interaction);
 
         expect(interaction.reply).toHaveBeenCalledWith({
-            content: 'There was an error while getting the opening statistics.',
+            content: 'There was an error while getting the top games.',
             ephemeral: true
         });
     });
@@ -75,7 +71,7 @@ describe('openingstats command', () => {
         await execute(interaction);
 
         expect(interaction.reply).toHaveBeenCalledWith({
-            content: 'There was an error while getting the opening statistics.',
+            content: 'There was an error while getting the top games.',
             ephemeral: true
         });
     });
