@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 export const data = new SlashCommandBuilder()
     .setName('eval')
-    .setDescription('Evaluates a FEN chess position')
+    .setDescription('Evaluates the given FEN position using Lichess cloud eval and returns the cached evaluation score.')
     .addStringOption(option =>
         option.setName('fen')
             .setDescription('The FEN string of the chess position')
