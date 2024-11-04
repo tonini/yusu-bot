@@ -55,7 +55,7 @@ export async function execute(interaction) {
 function formatMovesData(data) {
     return data.moves.map(move => {
         const totalGames = move.white + move.draws + move.black;
-        const winRate = (move.white * 200 / totalGames).toFixed(2);
+        const winRate = (move.white * 100 / totalGames).toFixed(2);
         const drawRate = (move.draws * 100 / totalGames).toFixed(2);
         const loseRate = (move.black * 100 / totalGames).toFixed(2);
         return `> **${move.san}:** ${winRate}% W, ${drawRate}% D, ${loseRate}% L (${totalGames} games)`;
