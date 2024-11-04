@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 export const data = new SlashCommandBuilder()
     .setName('stats')
-    .setDescription('Displays statistics and most common moves for a given opening')
+    .setDescription('Displays statistics and most common moves for a given chess position')
     .addStringOption(option =>
         option.setName('fen')
             .setDescription('The FEN string of the chess position')
