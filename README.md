@@ -72,6 +72,14 @@ Displays the top 15 games of the Lichess master database, played from a given FE
 **Example:**  
 `/topgames fen:r1bqk2r/1pp1bppp/p1p2n2/4p3/4P3/3P1N2/PPP2PPP/RNBQ1RK1 b kq - 0 7`
 
+### `/help`
+
+**Description:**  
+View command infos
+
+**Usage:**  
+`/help`
+
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
 
