@@ -21,5 +21,5 @@ export async function execute(interaction) {
         color: 692769,
     };
 
-    await interaction.reply({ embeds: [embed], ephemeral: true });
+    await interaction.reply({ embeds: [embed], ephemeral: false });
 }
