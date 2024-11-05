@@ -28,6 +28,10 @@ export async function execute(interaction) {
             description: 'Displays statistics and most common moves for a given chess position',
         },
         {
+            name: '/commandments',
+            description: "Displays Yusupov's Ten Commandments",
+        },
+        {
           name: 'Version:',
           description: `${config.version}`,
       }
