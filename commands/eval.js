@@ -1,5 +1,6 @@
 import { embedLength, SlashCommandBuilder } from 'discord.js';
 import fetch from 'node-fetch';
+import { Chess } from 'chess.js';
 
 export const data = new SlashCommandBuilder()
     .setName('eval')
@@ -27,11 +28,11 @@ export async function execute(interaction) {
         // Replace spaces with underscores to create a valid URL for lichess analysis
         const encodedFen = fen.replace(/ /g, '_');
         const url = `https://lichess.org/analysis/${encodedFen}`;
-
+        const turn = new Chess(fen).turn() === 'w' ? 'White to move' : 'Black to move';
         await interaction.reply({
             embeds: [{
                 title: `**Position Evaluation:** ${evaluation} pawns`,
-                description: `**[View on Lichess](${url})**`,
+                description: `**[View on Lichess](${url})**\n\n${turn}`,
                 image: { url: imageUrl },
                 color: 692769
                 }],
